@@ -1,5 +1,6 @@
 import csv
 import os
+from datetime import datetime
 
 class CustomCSVReader:
     def __init__(self, filepath, delimiter=';'):
@@ -11,20 +12,30 @@ class CustomCSVReader:
             reader = csv.DictReader(file, delimiter=self.delimiter)
             return [row for row in reader]
 
-def valores_do_buedos(valor):
-    if valor in ["not available", "not applicable", "NA", "\\s"]:
-        return 0
-    try:
-        return float(valor)
-    except ValueError:
-        return 0
-
-def comillas_raras(valor):
-    return valor.replace("'", "\\'")
-
 def escribir_datos_txt(archivo, filepath):
     with open(filepath, 'a', encoding='utf-8') as escritor:
         escritor.write(archivo + '\n')
+
+def Edad(valor):
+    return valor.replace("SIN DATO", "")
+
+def Fragante_boleta(valor):
+    if valor == "FLAGRANTE":
+        return "SI"
+    elif valor == "BOLETA":
+        return "NO"
+    else:
+        return valor
+
+def hora(valor):
+    time_obj = datetime.strptime(valor, '%I:%M:%S %p')
+    time_24h_str = time_obj.strftime('%H:%M:%S')
+    return time_24h_str
+
+def fecha(valor):
+    date_obj = datetime.strptime(valor, '%d/%m/%Y')
+    new_date_str = date_obj.strftime('%y/%m/%d')
+    return new_date_str
 
 def generar_data_goals(data, output_filepath):
     insert_format = (
@@ -35,21 +46,125 @@ def generar_data_goals(data, output_filepath):
     for row in data:
         if comillas_raras(row["goals_team_id"].strip()) != "NA":
             insert_values = (
-                comillas_raras(row["goals_team_id"].strip()),
-                comillas_raras(row["matches_tournament_id"].strip()),
-                comillas_raras(row["goals_player_id"].strip()),
-                comillas_raras(row["goals_player_team_id"].strip()),
-                comillas_raras(row["goals_goal_id"].strip()),
-                comillas_raras(row["goals_minute_label"].strip()),
-                int(valores_do_buedos(row["goals_minute_regulation"].strip())),
-                int(valores_do_buedos(row["goals_minute_stoppage"].strip())),
-                comillas_raras(row["goals_match_period"].strip()),
-                int(valores_do_buedos(row["goals_own_goal"].strip())),
-                int(valores_do_buedos(row["goals_penalty"].strip()))
+                comillas_raras(row["arma"].strip()),
+                comillas_raras(row["tipo_arma"].strip())
             )
 
             sql_statement = insert_format % insert_values
             escribir_datos_txt(sql_statement, output_filepath)
+
+def generar_data_goals(data, output_filepath):
+    insert_format = (
+        "INSERT INTO armas(arma_id, tipo_arma, arma) "
+        "VALUES('%d', '%s', '%s');"
+    )
+
+    for row in data:
+        if comillas_raras(row["goals_team_id"].strip()) != "NA":
+            insert_values = (
+                comillas_raras(row["arma"].strip()),
+                comillas_raras(row["tipo_arma"].strip())
+            )
+
+            sql_statement = insert_format % insert_values
+            escribir_datos_txt(sql_statement, output_filepath)
+
+def generar_data_goals(data, output_filepath):
+    insert_format = (
+        "INSERT INTO armas(arma_id, tipo_arma, arma) "
+        "VALUES('%d', '%s', '%s');"
+    )
+
+    for row in data:
+        if comillas_raras(row["goals_team_id"].strip()) != "NA":
+            insert_values = (
+                comillas_raras(row["arma"].strip()),
+                comillas_raras(row["tipo_arma"].strip())
+            )
+
+            sql_statement = insert_format % insert_values
+            escribir_datos_txt(sql_statement, output_filepath)
+
+def generar_data_goals(data, output_filepath):
+    insert_format = (
+        "INSERT INTO armas(arma_id, tipo_arma, arma) "
+        "VALUES('%d', '%s', '%s');"
+    )
+
+    for row in data:
+        if comillas_raras(row["goals_team_id"].strip()) != "NA":
+            insert_values = (
+                comillas_raras(row["arma"].strip()),
+                comillas_raras(row["tipo_arma"].strip())
+            )
+
+            sql_statement = insert_format % insert_values
+            escribir_datos_txt(sql_statement, output_filepath)
+
+def generar_data_goals(data, output_filepath):
+    insert_format = (
+        "INSERT INTO armas(arma_id, tipo_arma, arma) "
+        "VALUES('%d', '%s', '%s');"
+    )
+
+    for row in data:
+        if comillas_raras(row["goals_team_id"].strip()) != "NA":
+            insert_values = (
+                comillas_raras(row["arma"].strip()),
+                comillas_raras(row["tipo_arma"].strip())
+            )
+
+            sql_statement = insert_format % insert_values
+            escribir_datos_txt(sql_statement, output_filepath)
+
+def generar_data_goals(data, output_filepath):
+    insert_format = (
+        "INSERT INTO armas(arma_id, tipo_arma, arma) "
+        "VALUES('%d', '%s', '%s');"
+    )
+
+    for row in data:
+        if comillas_raras(row["goals_team_id"].strip()) != "NA":
+            insert_values = (
+                comillas_raras(row["arma"].strip()),
+                comillas_raras(row["tipo_arma"].strip())
+            )
+
+            sql_statement = insert_format % insert_values
+            escribir_datos_txt(sql_statement, output_filepath)
+
+def generar_data_goals(data, output_filepath):
+    insert_format = (
+        "INSERT INTO armas(arma_id, tipo_arma, arma) "
+        "VALUES('%d', '%s', '%s');"
+    )
+
+    for row in data:
+        if comillas_raras(row["goals_team_id"].strip()) != "NA":
+            insert_values = (
+                comillas_raras(row["arma"].strip()),
+                comillas_raras(row["tipo_arma"].strip())
+            )
+
+            sql_statement = insert_format % insert_values
+            escribir_datos_txt(sql_statement, output_filepath)
+
+def generar_data_goals(data, output_filepath):
+    insert_format = (
+        "INSERT INTO armas(arma_id, tipo_arma, arma) "
+        "VALUES('%d', '%s', '%s');"
+    )
+
+    for row in data:
+        if comillas_raras(row["goals_team_id"].strip()) != "NA":
+            insert_values = (
+                comillas_raras(row["arma"].strip()),
+                comillas_raras(row["tipo_arma"].strip())
+            )
+
+            sql_statement = insert_format % insert_values
+            escribir_datos_txt(sql_statement, output_filepath)
+
 
 def main():
     ruta_csv = r'C:\Users\ruben\Desktop\Proyectos\Proyecto_integra2\anios_detenidos\2021.csv'
