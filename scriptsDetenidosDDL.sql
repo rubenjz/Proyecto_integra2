@@ -1,3 +1,5 @@
+-- CREATE SCHEMA db_integrador2;
+-- USE db_integrador2;
 -- -----------------------------------------------------
 -- Table `db_integrador2`.`armas`
 -- -----------------------------------------------------
@@ -9,8 +11,6 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`armas` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
-
-
 
 
 -- -----------------------------------------------------
@@ -61,9 +61,9 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`ubi_forma1` (
   `cantones_canton_id` VARCHAR(45) NOT NULL,
   `parroquias_parroquia_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Ubi_forma1_id`),
-  INDEX `fk_Ubi_forma1_provincincias1_idx` (`provincincias_provincia_id` ASC) VISIBLE,
-  INDEX `fk_Ubi_forma1_cantones1_idx` (`cantones_canton_id` ASC) VISIBLE,
-  INDEX `fk_Ubi_forma1_parroquias1_idx` (`parroquias_parroquia_id` ASC) VISIBLE,
+  INDEX `fk_Ubi_forma1_provincincias1_idx` (`provincincias_provincia_id` ASC),
+  INDEX `fk_Ubi_forma1_cantones1_idx` (`cantones_canton_id` ASC),
+  INDEX `fk_Ubi_forma1_parroquias1_idx` (`parroquias_parroquia_id` ASC),
   CONSTRAINT `fk_Ubi_forma1_provincincias1`
     FOREIGN KEY (`provincincias_provincia_id`)
     REFERENCES `db_integrador2`.`provincincias` (`provincia_id`)
@@ -132,9 +132,9 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`ubi_forma2` (
   `circuitos_circuito_id` INT NOT NULL,
   `distritos_distrito_id` INT NOT NULL,
   PRIMARY KEY (`Ubi_forma2_id`),
-  INDEX `fk_Ubi_forma2_zonas1_idx` (`zonas_zona_id` ASC) VISIBLE,
-  INDEX `fk_Ubi_forma2_circuitos1_idx` (`circuitos_circuito_id` ASC) VISIBLE,
-  INDEX `fk_Ubi_forma2_distritos1_idx` (`distritos_distrito_id` ASC) VISIBLE,
+  INDEX `fk_Ubi_forma2_zonas1_idx` (`zonas_zona_id` ASC),
+  INDEX `fk_Ubi_forma2_circuitos1_idx` (`circuitos_circuito_id` ASC),
+  INDEX `fk_Ubi_forma2_distritos1_idx` (`distritos_distrito_id` ASC),
   CONSTRAINT `fk_Ubi_forma2_zonas1`
     FOREIGN KEY (`zonas_zona_id`)
     REFERENCES `db_integrador2`.`zonas` (`zona_id`)
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`personas` (
   `movilizacion` VARCHAR(255) NULL DEFAULT NULL,
   `personasGeneral_personas_general_id` INT NOT NULL,
   PRIMARY KEY (`persona_id`),
-  INDEX `fk_personas_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC) VISIBLE,
+  INDEX `fk_personas_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC),
   CONSTRAINT `fk_personas_personasGeneral1`
     FOREIGN KEY (`personasGeneral_personas_general_id`)
     REFERENCES `db_integrador2`.`personasGeneral` (`personas_general_id`)
@@ -242,12 +242,12 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`detenciones` (
   `fechaHora_fechaHora_id` VARCHAR(45) NOT NULL,
   `lugares_lugar_id` INT NOT NULL,
   PRIMARY KEY (`detencion_id`),
-  INDEX `fk_detenciones_armas1_idx` (`armas_arma_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_Ubi_forma11_idx` (`Ubi_forma1_Ubi_forma1_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_Ubi_forma21_idx` (`Ubi_forma2_Ubi_forma2_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_personas1_idx` (`personas_person_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_fechaHora1_idx` (`fechaHora_fechaHora_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_lugares1_idx` (`lugares_lugar_id` ASC) VISIBLE,
+  INDEX `fk_detenciones_armas1_idx` (`armas_arma_id` ASC),
+  INDEX `fk_detenciones_Ubi_forma11_idx` (`Ubi_forma1_Ubi_forma1_id` ASC),
+  INDEX `fk_detenciones_Ubi_forma21_idx` (`Ubi_forma2_Ubi_forma2_id` ASC),
+  INDEX `fk_detenciones_personas1_idx` (`personas_person_id` ASC),
+  INDEX `fk_detenciones_fechaHora1_idx` (`fechaHora_fechaHora_id` ASC),
+  INDEX `fk_detenciones_lugares1_idx` (`lugares_lugar_id` ASC),
   CONSTRAINT `fk_detenciones_armas1`
     FOREIGN KEY (`armas_arma_id`)
     REFERENCES `db_integrador2`.`armas` (`arma_id`)
@@ -347,8 +347,8 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`victimasDeMuerte` (
   `zonas_zona_id` INT NOT NULL,
   `personasGeneral_personas_general_id` INT NOT NULL,
   PRIMARY KEY (`victimas_muerte_id`),
-  INDEX `fk_victimas_de_muerte_zonas1_idx` (`zonas_zona_id` ASC) VISIBLE,
-  INDEX `fk_victimasDeMuerte_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC) VISIBLE,
+  INDEX `fk_victimas_de_muerte_zonas1_idx` (`zonas_zona_id` ASC),
+  INDEX `fk_victimasDeMuerte_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC),
   CONSTRAINT `fk_victimas_de_muerte_zonas1`
     FOREIGN KEY (`zonas_zona_id`)
     REFERENCES `db_integrador2`.`zonas` (`zona_id`)
@@ -363,6 +363,8 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- Crear un nuevo usuario
+-- CREATE USER 'ASMR'@'localhost' IDENTIFIED BY 'pato';
+
+-- Asignar privilegios (en este caso, todos los privilegios en todas las bases de datos)
+-- GRANT ALL PRIVILEGES ON nombre_base_datos.* TO 'ASMR'@'localhost';

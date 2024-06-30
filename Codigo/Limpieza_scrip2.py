@@ -28,10 +28,8 @@ def escribir_datos_txt(archivo, filepath):
 
 def generar_data_goals(data, output_filepath):
     insert_format = (
-        "INSERT INTO goals(goals_team_id, goals_tournament_id, goals_player_id, "
-        "goals_player_team_id, goals_goal_id, goals_minute_label, goals_minute_regulation, "
-        "goals_minute_stoppage, goals_match_period, goals_own_goal, goals_penalty) "
-        "VALUES('%s', '%s', '%s', '%s', '%s', '%s', %d, %d, '%s', %d, %d);"
+        "INSERT INTO armas(arma_id, tipo_arma, arma) "
+        "VALUES('%d', '%s', '%s');"
     )
 
     for row in data:
@@ -54,8 +52,8 @@ def generar_data_goals(data, output_filepath):
             escribir_datos_txt(sql_statement, output_filepath)
 
 def main():
-    ruta_csv = "D:/Users/LENOVO/Documents/ESTA CARPETA ESTA ORGANIZADA/ArchivoPIntegrador/dsAlineacionesXTorneo.csv"
-    ruta_txt = "D:/Users/LENOVO/Documents/ESTA CARPETA ESTA ORGANIZADA/scriptInsertIntos.sql"
+    ruta_csv = r'C:\Users\ruben\Desktop\Proyectos\Proyecto_integra2\anios_detenidos\2021.csv'
+    ruta_txt = r'C:\Users\ruben\Desktop\Proyectos\Proyecto_integra2\Scrip\Scrip.sql'
 
     reader = CustomCSVReader(ruta_csv)
     content_file = reader.read()
