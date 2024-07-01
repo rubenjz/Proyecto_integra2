@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`personas` (
   `movilizacion` VARCHAR(255) NULL DEFAULT NULL,
   `personasGeneral_personas_general_id` INT NOT NULL,
   PRIMARY KEY (`persona_id`),
-  INDEX `fk_personas_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC) VISIBLE,
+  INDEX `fk_personas_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC),
   CONSTRAINT `fk_personas_personasGeneral1`
     FOREIGN KEY (`personasGeneral_personas_general_id`)
     REFERENCES `db_integrador2`.`personasgeneral` (`personas_general_id`))
@@ -151,9 +151,9 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`ubi_forma2` (
   `circuitos_circuito_id` INT NOT NULL,
   `distritos_distrito_id` INT NOT NULL,
   PRIMARY KEY (`Ubi_forma2_id`),
-  INDEX `fk_Ubi_forma2_zonas1_idx` (`zonas_zona_id` ASC) VISIBLE,
-  INDEX `fk_Ubi_forma2_circuitos1_idx` (`circuitos_circuito_id` ASC) VISIBLE,
-  INDEX `fk_Ubi_forma2_distritos1_idx` (`distritos_distrito_id` ASC) VISIBLE,
+  INDEX `fk_Ubi_forma2_zonas1_idx` (`zonas_zona_id` ASC),
+  INDEX `fk_Ubi_forma2_circuitos1_idx` (`circuitos_circuito_id` ASC),
+  INDEX `fk_Ubi_forma2_distritos1_idx` (`distritos_distrito_id` ASC),
   CONSTRAINT `fk_Ubi_forma2_circuitos1`
     FOREIGN KEY (`circuitos_circuito_id`)
     REFERENCES `db_integrador2`.`circuitos` (`circuito_id`),
@@ -203,9 +203,9 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`ubi_forma1` (
   `parroquias_parroquia_id` INT NOT NULL,
   `provincincias_provincia_id` INT NOT NULL,
   PRIMARY KEY (`Ubi_forma1_id`),
-  INDEX `fk_ubi_forma1_cantones1_idx` (`cantones_canton_id` ASC) VISIBLE,
-  INDEX `fk_ubi_forma1_parroquias1_idx` (`parroquias_parroquia_id` ASC) VISIBLE,
-  INDEX `fk_ubi_forma1_provincincias1_idx` (`provincincias_provincia_id` ASC) VISIBLE,
+  INDEX `fk_ubi_forma1_cantones1_idx` (`cantones_canton_id` ASC),
+  INDEX `fk_ubi_forma1_parroquias1_idx` (`parroquias_parroquia_id` ASC),
+  INDEX `fk_ubi_forma1_provincincias1_idx` (`provincincias_provincia_id` ASC),
   CONSTRAINT `fk_ubi_forma1_cantones1`
     FOREIGN KEY (`cantones_canton_id`)
     REFERENCES `db_integrador2`.`cantones` (`canton_id`)
@@ -259,12 +259,12 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`detenciones` (
   `ubi_forma1_Ubi_forma1_id` INT NOT NULL,
   `fechahora_fechaHora_id` INT NOT NULL,
   PRIMARY KEY (`detencion_id`),
-  INDEX `fk_detenciones_armas1_idx` (`armas_arma_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_Ubi_forma21_idx` (`Ubi_forma2_Ubi_forma2_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_personas1_idx` (`personas_person_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_lugares1_idx` (`lugares_lugar_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_ubi_forma11_idx` (`ubi_forma1_Ubi_forma1_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_fechahora1_idx` (`fechahora_fechaHora_id` ASC) VISIBLE,
+  INDEX `fk_detenciones_armas1_idx` (`armas_arma_id` ASC),
+  INDEX `fk_detenciones_Ubi_forma21_idx` (`Ubi_forma2_Ubi_forma2_id` ASC),
+  INDEX `fk_detenciones_personas1_idx` (`personas_person_id` ASC),
+  INDEX `fk_detenciones_lugares1_idx` (`lugares_lugar_id` ASC),
+  INDEX `fk_detenciones_ubi_forma11_idx` (`ubi_forma1_Ubi_forma1_id` ASC),
+  INDEX `fk_detenciones_fechahora1_idx` (`fechahora_fechaHora_id` ASC),
   CONSTRAINT `fk_detenciones_armas1`
     FOREIGN KEY (`armas_arma_id`)
     REFERENCES `db_integrador2`.`armas` (`arma_id`),
@@ -356,8 +356,8 @@ CREATE TABLE IF NOT EXISTS `db_integrador2`.`victimasdemuerte` (
   `zonas_zona_id` INT NOT NULL,
   `personasGeneral_personas_general_id` INT NOT NULL,
   PRIMARY KEY (`victimas_muerte_id`),
-  INDEX `fk_victimas_de_muerte_zonas1_idx` (`zonas_zona_id` ASC) VISIBLE,
-  INDEX `fk_victimasDeMuerte_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC) VISIBLE,
+  INDEX `fk_victimas_de_muerte_zonas1_idx` (`zonas_zona_id` ASC),
+  INDEX `fk_victimasDeMuerte_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC),
   CONSTRAINT `fk_victimas_de_muerte_zonas1`
     FOREIGN KEY (`zonas_zona_id`)
     REFERENCES `db_integrador2`.`zonas` (`zona_id`),
@@ -465,7 +465,7 @@ CREATE TABLE IF NOT EXISTS `i1`.`personas` (
   `movilizacion` VARCHAR(255) NULL DEFAULT NULL,
   `personasGeneral_personas_general_id` INT NOT NULL,
   PRIMARY KEY (`persona_id`),
-  INDEX `fk_personas_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC) VISIBLE,
+  INDEX `fk_personas_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC),
   CONSTRAINT `fk_personas_personasGeneral1`
     FOREIGN KEY (`personasGeneral_personas_general_id`)
     REFERENCES `i1`.`personasgeneral` (`personas_general_id`))
@@ -509,9 +509,9 @@ CREATE TABLE IF NOT EXISTS `i1`.`ubi_forma1` (
   `parroquias_parroquia_id` INT NOT NULL,
   `provincincias_provincia_id` INT NOT NULL,
   PRIMARY KEY (`Ubi_forma1_id`),
-  INDEX `fk_ubi_forma1_cantones1_idx` (`cantones_canton_id` ASC) VISIBLE,
-  INDEX `fk_ubi_forma1_parroquias1_idx` (`parroquias_parroquia_id` ASC) VISIBLE,
-  INDEX `fk_ubi_forma1_provincincias1_idx` (`provincincias_provincia_id` ASC) VISIBLE,
+  INDEX `fk_ubi_forma1_cantones1_idx` (`cantones_canton_id` ASC),
+  INDEX `fk_ubi_forma1_parroquias1_idx` (`parroquias_parroquia_id` ASC),
+  INDEX `fk_ubi_forma1_provincincias1_idx` (`provincincias_provincia_id` ASC),
   CONSTRAINT `fk_ubi_forma1_cantones1`
     FOREIGN KEY (`cantones_canton_id`)
     REFERENCES `i1`.`cantones` (`canton_id`),
@@ -561,9 +561,9 @@ CREATE TABLE IF NOT EXISTS `i1`.`ubi_forma2` (
   `circuitos_circuito_id` INT NOT NULL,
   `distritos_distrito_id` INT NOT NULL,
   PRIMARY KEY (`Ubi_forma2_id`),
-  INDEX `fk_Ubi_forma2_zonas1_idx` (`zonas_zona_id` ASC) VISIBLE,
-  INDEX `fk_Ubi_forma2_circuitos1_idx` (`circuitos_circuito_id` ASC) VISIBLE,
-  INDEX `fk_Ubi_forma2_distritos1_idx` (`distritos_distrito_id` ASC) VISIBLE,
+  INDEX `fk_Ubi_forma2_zonas1_idx` (`zonas_zona_id` ASC),
+  INDEX `fk_Ubi_forma2_circuitos1_idx` (`circuitos_circuito_id` ASC),
+  INDEX `fk_Ubi_forma2_distritos1_idx` (`distritos_distrito_id` ASC),
   CONSTRAINT `fk_Ubi_forma2_circuitos1`
     FOREIGN KEY (`circuitos_circuito_id`)
     REFERENCES `i1`.`circuitos` (`circuito_id`),
@@ -598,12 +598,12 @@ CREATE TABLE IF NOT EXISTS `i1`.`detenciones` (
   `ubi_forma1_Ubi_forma1_id` INT NOT NULL,
   `fechahora_fechaHora_id` INT NOT NULL,
   PRIMARY KEY (`detencion_id`),
-  INDEX `fk_detenciones_armas1_idx` (`armas_arma_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_Ubi_forma21_idx` (`Ubi_forma2_Ubi_forma2_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_personas1_idx` (`personas_person_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_lugares1_idx` (`lugares_lugar_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_ubi_forma11_idx` (`ubi_forma1_Ubi_forma1_id` ASC) VISIBLE,
-  INDEX `fk_detenciones_fechahora1_idx` (`fechahora_fechaHora_id` ASC) VISIBLE,
+  INDEX `fk_detenciones_armas1_idx` (`armas_arma_id` ASC),
+  INDEX `fk_detenciones_Ubi_forma21_idx` (`Ubi_forma2_Ubi_forma2_id` ASC),
+  INDEX `fk_detenciones_personas1_idx` (`personas_person_id` ASC),
+  INDEX `fk_detenciones_lugares1_idx` (`lugares_lugar_id` ASC),
+  INDEX `fk_detenciones_ubi_forma11_idx` (`ubi_forma1_Ubi_forma1_id` ASC),
+  INDEX `fk_detenciones_fechahora1_idx` (`fechahora_fechaHora_id` ASC),
   CONSTRAINT `fk_detenciones_armas1`
     FOREIGN KEY (`armas_arma_id`)
     REFERENCES `i1`.`armas` (`arma_id`),
@@ -691,8 +691,8 @@ CREATE TABLE IF NOT EXISTS `i1`.`victimasdemuerte` (
   `zonas_zona_id` INT NOT NULL,
   `personasGeneral_personas_general_id` INT NOT NULL,
   PRIMARY KEY (`victimas_muerte_id`),
-  INDEX `fk_victimas_de_muerte_zonas1_idx` (`zonas_zona_id` ASC) VISIBLE,
-  INDEX `fk_victimasDeMuerte_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC) VISIBLE,
+  INDEX `fk_victimas_de_muerte_zonas1_idx` (`zonas_zona_id` ASC),
+  INDEX `fk_victimasDeMuerte_personasGeneral1_idx` (`personasGeneral_personas_general_id` ASC),
   CONSTRAINT `fk_victimas_de_muerte_zonas1`
     FOREIGN KEY (`zonas_zona_id`)
     REFERENCES `i1`.`zonas` (`zona_id`),
