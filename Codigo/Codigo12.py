@@ -1,5 +1,4 @@
-def run_code(user_input):
-    eval(user_input)  # Inseguro: esto debería generar una alerta en CodeQL
+import os
 
-def safe_code():
-    print("Esto es seguro.")
+def insecure_function(user_input):
+    os.system("echo " + user_input)
