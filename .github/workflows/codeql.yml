@@ -12,22 +12,23 @@
 name: "CodeQL"
 
 on:
-  workflow_dispatch:  # <-- Esto permite ejecutarlo manualmente desde la pestaña Actions
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 0 * * 0'  # Corre semanalmente
 
 jobs:
   analyze:
-    name: Analyze with CodeQL
+    name: Analyze
     runs-on: ubuntu-latest
-
     permissions:
       security-events: write
-      actions: read
-      contents: read
 
     strategy:
-      fail-fast: false
       matrix:
-        language: [python]
+        language: [ 'python' ]  # Asegura que Python esté aquí
 
     steps:
       - name: Checkout repository
